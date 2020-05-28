@@ -60,10 +60,10 @@ class FormattedTable:
     """
     Returns the width of the table
     """
-    def get_table_width(self):
+    def __get_table_width(self):
         size = 1 + self.col_num
         if self.equal_column_size:
-            size = size + (self.get_longest_word("") + 2) * self.col_num
+            size = size + (self.__get_longest_word("") + 2) * self.col_num
         else:
             # get the longest word for each column and added its length to the size
             for col in self.columns:
@@ -76,7 +76,7 @@ class FormattedTable:
     """
     Returns the height of the table
     """
-    def get_table_height(self):
+    def __get_table_height(self):
         size = 0
         for col in self.columns:
             size = max(size, len(self.elements[col]))
@@ -86,7 +86,7 @@ class FormattedTable:
     Returns the longest word in the specified column - could be the column name itself
         Params: col -> name of the column that you are looking for
     """
-    def get_longest_word(self, col):
+    def __get_longest_word(self, col):
         size = 0
         if self.equal_column_size:
             for col in self.columns:
@@ -104,7 +104,7 @@ class FormattedTable:
     print_result param is specified as True
     """
     def get_table(self, print_result=False):
-        table_width = self.get_table_width()
+        table_width = self.__get_table_width()
 
         # start off with the top of the table
         output = '-' * table_width + '\n'
@@ -112,7 +112,7 @@ class FormattedTable:
         # add the column names
         for col in self.columns:
             #get the longest word in the column
-            longest = self.get_longest_word(col)
+            longest = self.__get_longest_word(col)
 
             # figure out the left and right spacing between the vertical lines
             diff = longest - len(col)
@@ -131,13 +131,13 @@ class FormattedTable:
         indexes = [0] * self.col_num
 
         # add the rows
-        for _ in range(0, self.get_table_height()):
+        for _ in range(0, self.__get_table_height()):
 
             # for each row
             for i in range(0, self.col_num):
                 col = self.columns[i]
                 index = indexes[i]
-                longest = self.get_longest_word(col)
+                longest = self.__get_longest_word(col)
 
                 # if there is another element to be added
                 if index < len(self.elements[col]) and self.elements[col][index] is not None:
