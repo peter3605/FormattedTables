@@ -170,6 +170,7 @@ class FormattedTable:
     Saves the current table to a file
         Params: file_name -> the name of the file you want to save the table to - default is 'pretty_table.txt' in the same directory
                 overwrite -> if False then it appends the table to the file - default is True
+     Works best on .txt files
     """
     def save_to_file(self, file_name='formatted_table.txt', overwrite=True):
         #open file - mode should be append if overwrite is false
