@@ -1,7 +1,7 @@
 from main import FormattedTable
 
 # different column sizes
-table = FormattedTable()
+table = FormattedTable(equal_column_size=False)
 table.add_column('col1')
 table.add_columns(['col2','col3','col4'])
 table.add_element('col1','aaaaa')
@@ -14,7 +14,7 @@ table.get_table()
 print(table.save_to_file(file_name = "formatted_table.txt"))
 
 # equal column sizes
-table = FormattedTable(equal_column_size=True)
+table = FormattedTable()
 table.add_column('col1')
 table.add_columns(['col2','col3','col4'])
 table.add_element('col1','aaaaa')

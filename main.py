@@ -2,9 +2,9 @@ class FormattedTable:
     """
     Constructor for this class
         Params: equal_column_size: optional param that if set to True, makes all of the columns in the table be of
-                                   the same width - default is False
+                                   the same width - default is True
     """
-    def __init__(self, equal_column_size=False):
+    def __init__(self, equal_column_size=True):
         self.columns = []
         self.elements = {}
         self.col_num = 0
