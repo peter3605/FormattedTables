@@ -17,7 +17,7 @@ class FormattedTable:
     Ex: table.add_column('new column')
     """
     def add_column(self, col):
-        col = str(col)
+        col = f'"{str(col)}"'
         self.columns.append(col)
         self.elements[col] = []
         self.col_num = self.col_num + 1
@@ -41,9 +41,10 @@ class FormattedTable:
     """
     def add_element(self, col, elem):
         col = str(col)
-        if col not in self.columns:
+        quote_col = f'"{col}"'
+        if quote_col not in self.columns:
             self.add_columns([col])
-        self.elements[col].append(str(elem))
+        self.elements[quote_col].append(str(elem))
 
     """
     Add multiple new table elements
